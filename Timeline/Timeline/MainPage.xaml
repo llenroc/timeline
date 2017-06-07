@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Timeline"
+             x:Class="Timeline.MainPage">
+    <StackLayout
+        Spacing="0"
+        Orientation="Vertical">
+        <local:Header 
+            x:Name="TimelineHeader"
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand"/>
+        <!-- Timeline list is fed with data items for messages and separators.-->
+        <ListView
+            x:Name="TimelineList"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            SeparatorVisibility="None"
+            HasUnevenRows="True"
+            BackgroundColor="#f7f7f7">
+            <!-- Disambiguates between splitters and messages -->
+            <ListView.ItemTemplate>
+                <local:TimelineTemplateSelector />
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <!-- A "load more" button, without any effect -->
+                <StackLayout 
+                    Orientation="Vertical"  
+                    Spacing="0"
+                    Margin="10,10,10,0">
+                    <Label Text="load more" HorizontalOptions="Center" TextColor="#55BB79" />
+                    <BoxView HeightRequest="1"  HorizontalOptions="Center"  WidthRequest="65" Color="#55BB79" />
+                </StackLayout>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+</ContentPage>

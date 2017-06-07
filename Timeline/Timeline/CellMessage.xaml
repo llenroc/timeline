@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Timeline.CellMessage">
+    <ViewCell.View>
+        <StackLayout Orientation="Horizontal" Margin="10,10,10,0" Spacing="0">
+            <!-- Icon and overlays-->
+            <AbsoluteLayout VerticalOptions="Start">
+                <Image Source="{Binding User.Avatar}" 
+                       AbsoluteLayout.LayoutBounds="0,0,64,64" />
+                <Image Source="ListMask.png" 
+                       AbsoluteLayout.LayoutBounds="0,0,64,64" />
+
+                <Image Source="Left.jpg" 
+                       AnchorX="1"
+                       AbsoluteLayout.LayoutBounds="56,24,8,16"/>
+                
+                <Image Source="Twitter.jpg" 
+                       AnchorX="0"
+                       AnchorY="1"
+                       AbsoluteLayout.LayoutBounds="0,44,20,20"
+                       IsVisible="{Binding User.Online}" />
+            </AbsoluteLayout>
+
+            <StackLayout BackgroundColor="#ffffff" Orientation="Vertical" Padding="16">
+                <!-- User info -->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#ffffff">
+                    <Label Text="{Binding User.ScreenName}" TextColor="Black" FontAttributes="Bold"/>
+                    <Label Text="{Binding User.Handle}" TextColor="#ADC1B3" />
+                </StackLayout>
+
+                <!-- Messag text -->
+                <Label Text="{Binding Message}" FontSize="Medium" TextColor="Black" LineBreakMode="WordWrap" BackgroundColor="#ffffff" />
+
+                <!-- Absolute time and pulse icon -->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#ffffff" IsVisible="{Binding Pulse}">
+                    <!-- Duration since sending -->
+                    <Label Text="{Binding ElapsedString}" TextColor="#ADC1B3"  HorizontalOptions="Start"/>
+                    <Label Text="{Binding AbsoluteString}" TextColor="#55BB79" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+                    <Image Source="Graph.jpg"  HorizontalOptions="End"  WidthRequest="16" HeightRequest="16"/>
+                </StackLayout>
+
+                <!-- Absolute time and negative pulse icon -->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#ffffff" IsVisible="{Binding NotPulse}">
+                    <!-- Duration since sending -->
+                    <Label Text="{Binding ElapsedString}" TextColor="#CDCDCD" HorizontalOptions="Start"/>
+                    <Label Text="{Binding AbsoluteString}" TextColor="#7E7E7E" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
+                    <Image Source="Graph2.jpg"  HorizontalOptions="End"  WidthRequest="16" HeightRequest="16"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>
